@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".HomeMenu4" >
+
+    <TextView
+        android:id="@+id/MedAppCaptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/MedApp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/Black"
+        android:textSize="@dimen/MedAppCaptionTextSize"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp" >
+
+            <Button
+                android:id="@+id/HeartAttackButton"
+                style="@style/HomeMenuButtonStyle"
+                android:layout_alignParentTop="true"
+                android:onClick="startHeartAttackActivity"
+                android:text="@string/_HeartAttack" />
+
+            <Button
+                android:id="@+id/HypothermiaButton"
+                style="@style/HomeMenuButtonStyle"
+                android:layout_below="@+id/HeartAttackButton"
+                android:onClick="startHypothermiaActivity"
+                android:text="@string/_Hypothermia" />
+
+            <Button
+                android:id="@+id/MeningitisButton"
+                style="@style/HomeMenuButtonStyle"
+                android:layout_below="@+id/HypothermiaButton"
+                android:onClick="startMeningitisActivity"
+                android:text="@string/Meningitis" />
+
+            <Button
+                android:id="@+id/OtherButton"
+                style="@style/HomeMenuButtonStyle"
+                android:layout_below="@+id/MeningitisButton"
+                android:onClick="toHomeMenu5"
+                android:text="@string/other" />
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>

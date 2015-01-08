@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="gidy.medappnem"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="18" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="gidy.medappnem.HomeMenu"
+            android:label="@string/app_name"
+            android:theme="@style/MedAppTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="gidy.medappnem.videoActivities.ChokeActivityVideo" >
+        </activity>
+        <activity android:name="gidy.medappnem.activities.ChokeActivity" >
+        </activity>
+        <activity android:name="gidy.medappnem.CallAmbulanceActivity" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.activities.AllergicReactionActivity"
+            android:label="@string/title_activity_allergic_reaction" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.activities.AsthmaActivity"
+            android:label="@string/title_activity_asthma" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.videoActivities.AsthmaVideoActivity"
+            android:label="@string/title_activity_asthma_video" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.activities.BleedingActivity"
+            android:label="@string/title_activity_bleeding" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.videoActivities.BleedingVideoActivity"
+            android:label="@string/title_activity_bleeding_video" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.activities.BrokenBoneActivity"
+            android:label="@string/title_activity_broken_bone" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.videoActivities.BrokenBoneVideoActivity"
+            android:label="@string/title_activity_broken_bone_video" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.activities.BurnActivity"
+            android:label="@string/title_activity_burn" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.videoActivities.BurnVideoActivity"
+            android:label="@string/title_activity_burn_video" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.activities.DiabeticActivity"
+            android:label="@string/title_activity_diabetic" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.activities.DistressActivity"
+            android:label="@string/title_activity_distress" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.activities.HeadInjuryActivity"
+            android:label="@string/title_activity_head_injury" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.activities.HeartAttackActivity"
+            android:label="@string/title_activity_heart_attack" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.activities.HypothermiaActivity"
+            android:label="@string/title_activity_hypothermia" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.activities.MeningitisActivity"
+            android:label="@string/title_activity_meningitis" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.activities.PoisoningActivity"
+            android:label="@string/title_activity_poisoning" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.activities.EpilepsyActivity"
+            android:label="@string/title_activity_epilepsy" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.activities.StrokeActivity"
+            android:label="@string/title_activity_stroke" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.activities.UnconsciousBreatingActivity"
+            android:label="@string/title_activity_unconsious_breating" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.activities.UnconsciousNotBreathingActivity"
+            android:label="@string/title_activity_unconscious_not_breathing" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.videoActivities.DiabeticVideoActivity"
+            android:label="@string/title_activity_diabetic_video" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.videoActivities.DistressVideoActivity"
+            android:label="@string/title_activity_distress_video" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.videoActivities.EpilepsyVideoActivity"
+            android:label="@string/title_activity_epilepsy_video" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.videoActivities.HeadInjuryVideoActivity"
+            android:label="@string/title_activity_head_injury_video" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.videoActivities.HeartAttackVideoActivity"
+            android:label="@string/title_activity_heart_attack_video" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.videoActivities.PoisoningVideoActivity"
+            android:label="@string/title_activity_poisoning_video" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.videoActivities.StrokeVideoActivity"
+            android:label="@string/title_activity_stroke_video" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.videoActivities.UnconsciousBreatingVideoActivity"
+            android:label="@string/title_activity_unconscious_breating_video" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.videoActivities.UnconsciousNotBreathingVideoActivity"
+            android:label="@string/title_activity_unconscious_not_breathing_video" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.HomeMenu2Activity"
+            android:label="@string/title_activity_home_menu2"
+            android:theme="@style/MedAppTheme" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.HomeMenu3Activity"
+            android:label="@string/title_activity_home_menu3"
+            android:theme="@style/MedAppTheme" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.HomeMenu4Activity"
+            android:label="@string/title_activity_home_menu4"
+            android:theme="@style/MedAppTheme" >
+        </activity>
+        <activity
+            android:name="gidy.medappnem.HomeMenu5Activity"
+            android:label="@string/title_activity_home_menu5"
+            android:theme="@style/MedAppTheme" >
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,80 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".HomeMenu5" >
+
+    <TextView
+        android:id="@+id/MedAppCaptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/MedApp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/Black"
+        android:textSize="@dimen/MedAppCaptionTextSize"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp" >
+
+            <Button
+                android:id="@+id/PoisoningButton"
+                style="@style/HomeMenuButtonStyle"
+                android:layout_height="80dp"
+                android:layout_alignParentTop="true"
+                android:onClick="startPoisoningActivity"
+                android:text="@string/Poisoning" 
+                android:textSize="@dimen/LastHomeMenuTextSize"/>
+
+            <Button
+                android:id="@+id/EpilepsyButton"
+                style="@style/HomeMenuButtonStyle"
+                android:layout_height="80dp"
+                android:layout_below="@id/PoisoningButton"
+                android:onClick="startEpilepsyActivity"
+                android:text="@string/Epilepsy"
+                android:textSize="@dimen/LastHomeMenuTextSize"/>
+
+            <Button
+                android:id="@+id/StrokeButton"
+                style="@style/HomeMenuButtonStyle"
+                android:layout_height="80dp"
+                android:layout_below="@+id/EpilepsyButton"
+                android:onClick="startStrokeActivity"
+                android:text="@string/Stroke" 
+                android:textSize="@dimen/LastHomeMenuTextSize"/>
+
+            <Button
+                android:id="@+id/UnconsciousBreathingButton"
+                style="@style/HomeMenuButtonStyle"
+                android:layout_height="80dp"
+                android:layout_below="@+id/StrokeButton"
+                android:onClick="startUnconsciousBreathingActivity"
+                android:text="@string/UnconsciousBreathing"
+                android:textSize="@dimen/LastHomeMenuTextSize"/>
+
+            <Button
+                android:id="@+id/UnconsciousNotBreathingButton"
+                style="@style/HomeMenuButtonStyle"
+                android:layout_height="100dp"
+                android:layout_below="@+id/UnconsciousBreathingButton"
+                android:onClick="startUnconsciousNotBreathingActivity"
+                android:text="@string/UnconsciousNotBreathing"
+                android:textSize="@dimen/LastHomeMenuTextSize"/>
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>
