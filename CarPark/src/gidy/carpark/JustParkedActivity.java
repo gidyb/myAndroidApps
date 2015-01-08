@@ -15,6 +15,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,8 +32,10 @@ import android.widget.TextView.OnEditorActionListener;
 public class JustParkedActivity extends Activity {
 
 	private static LocationsAdapter adapter;
-	
+
 	private GPSTracker _gpsTracker;
+	
+	private static String newLoc;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +43,8 @@ public class JustParkedActivity extends Activity {
 
 		setContentView(R.layout.activity_just_parked);
 
-		//_gpsTracker = new GPSTracker(JustParkedActivity.this);
+		_gpsTracker = new GPSTracker(JustParkedActivity.this);
+
 		CommonUtils.initHebrewText(this,(TextView)findViewById(R.id.whereParkedText));
 
 		// Handle locations list
@@ -70,11 +74,11 @@ public class JustParkedActivity extends Activity {
 			public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {		    	
 				boolean handled = false;
 				if (actionId == EditorInfo.IME_ACTION_DONE) {
-					String newLoc = v.getText().toString();
+					newLoc = v.getText().toString();
 					if (!newLoc.isEmpty()){
 
 						try{
-							addNewLocation(newLoc);
+							addNewLocation();
 						}
 						catch(Exception e){
 							// Too Bad :(
@@ -107,16 +111,37 @@ public class JustParkedActivity extends Activity {
 	}
 
 	public void setParking(View view) throws IOException, JSONException{
-		LocationUtils.setCurrentLocation(((Button)view).getText().toString());
+
+		String locStr = clearLocStrIfNeeded(((Button)view).getText().toString()); 
+
+		LocationUtils.setCurrentLocation(locStr);
 		backToHomeScreen();
 	}
 
-	private void backToHomeScreen(){
-		Intent intent = new Intent(this, HomeScreen.class);
-		startActivity(intent);
+	private String clearLocStrIfNeeded(String locStr) {
+
+		if (locStr.endsWith(" (ללא נ.צ.)")){
+			locStr = locStr.substring(0, locStr.length() - 11);
+		}
+
+		return locStr;
 	}
 
-	private void addNewLocation(String newLoc) throws IOException, JSONException{
+	private void backToHomeScreen(){
+		super.finish();
+	}
+
+	private void addNewLocation() throws IOException, JSONException{
+
+		if (!_gpsTracker.canGetLocation()){
+			showNoGpsAlert();
+		}
+		else{
+			addNewLocationInner(newLoc);
+		}
+	}
+
+	private void addNewLocationInner(String newLoc) throws IOException, JSONException{
 		ParkingLocation loc = new ParkingLocation(newLoc, _gpsTracker);
 		LocationUtils.addLocationAndSetCurrent(loc);
 		backToHomeScreen();
@@ -125,18 +150,19 @@ public class JustParkedActivity extends Activity {
 	@Override
 	public void onStop(){
 		try{
-			LocationUtils.saveLocationsToDisk();
+			LocationUtils.saveLocationsToDisk();	
+			_gpsTracker.stopUsingGPS();
 		}catch (Exception e){
 			// TOO BAD :(
 		}
 
 		super.onStop();
 	}
-	
+
 	private void removeParkingLocation(int position){
-		
+
 		final int deletePosition = position;
-		
+
 		AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
 		alert.setTitle("מחיקת מיקום");
@@ -148,7 +174,7 @@ public class JustParkedActivity extends Activity {
 				adapter.notifyDataSetChanged();
 				adapter.notifyDataSetInvalidated();					}
 		});
-		
+
 		alert.setNegativeButton("בטל", new OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
@@ -157,5 +183,34 @@ public class JustParkedActivity extends Activity {
 		});
 
 		alert.show();
+	}
+
+	private void showNoGpsAlert(){
+
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+		builder.setTitle("שמירת מיקום")
+		.setMessage("שירות המיקום איננו מופעל" + "\n" + "האם ברצונך להפעילו?") 
+		.setPositiveButton("כן", new OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+				backToHomeScreen();
+			}
+		})
+		.setNegativeButton("לא", new OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				try {
+					addNewLocationInner(newLoc);
+				} catch (Exception e) {
+					// Too Bad :(
+				} 
+			}			
+		});	
+	
+
+		AlertDialog alert = builder.create();
+		alert.show();	
 	}
 }

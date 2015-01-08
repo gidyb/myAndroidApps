@@ -14,8 +14,8 @@ public class ParkingLocation {
 	private String _locationStr;
 	private int _numParks;
 	private boolean _isCurrent;
-//	private Double _locLat;
-//	private Double _locLong;
+	private Double _locLat;
+	private Double _locLong;	
 	
 	public static boolean isOkPressed = false;
 
@@ -24,18 +24,15 @@ public class ParkingLocation {
 		_numParks = 0;
 		_isCurrent = false;
 
-//		// Handle location
-//		if (!gpsTracker.canGetLocation()){
-//			_locationStr += " (ללא נצ)";
-//			_locLat = null;
-//			_locLong = null;
-//		}
-//		else{
-//			_locLat = gpsTracker.getLatitude();
-//			_locLong = gpsTracker.getLongitude();
-//		}
-		
-//		gpsTracker.stopUsingGPS();
+		// Handle location
+		if (!gpsTracker.canGetLocation()){
+			_locLat = null;
+			_locLong = null;
+		}
+		else{
+			_locLat = gpsTracker.getLatitude();
+			_locLong = gpsTracker.getLongitude();
+		}
 	}
 
 	public void waitForOk(){
@@ -53,14 +50,14 @@ public class ParkingLocation {
 		_numParks = jsonLoc.getInt("numParks");
 		_isCurrent = jsonLoc.getBoolean("isCurrent");
 	
-//		if (_locLat != null && _locLong != null){
-//			_locLat = jsonLoc.getDouble("locLatitude");
-//			_locLong = jsonLoc.getDouble("locLongitude");
-//		}
-//		else{
-//			_locLat = null;
-//			_locLong = null;
-//		}
+		if (jsonLoc.has("locLatitude") && jsonLoc.has("locLongitude")){
+			_locLat = jsonLoc.getDouble("locLatitude");
+			_locLong = jsonLoc.getDouble("locLongitude");
+		}
+		else{
+			_locLat = null;
+			_locLong = null;
+		}
 	}
 
 	public String getLocationString(){
@@ -75,22 +72,22 @@ public class ParkingLocation {
 		return _isCurrent;
 	}
 	
-//	public Double getLong(){
-//		return _locLong;
-//	}
-//	
-//	public Double getLat(){
-//		return _locLat;
-//	}
+	public Double getLong(){
+		return _locLong;
+	}
+	
+	public Double getLat(){
+		return _locLat;
+	}
 
 	public void setCurrentParking(){
 		_isCurrent = true;
 		_numParks ++ ;
 	}
 	
-//	public boolean hasLocation(){
-//		return (_locLat == null || _locLong == null);
-//	}
+	public boolean hasLocation(){
+		return (_locLat != null && _locLong != null);
+	}
 
 	public void removeCurrentFlag(){
 		_isCurrent = false;
@@ -103,10 +100,9 @@ public class ParkingLocation {
 		jsonLoc.put("location", _locationStr);
 		jsonLoc.put("numParks", _numParks);
 		jsonLoc.put("isCurrent", _isCurrent);
-//		jsonLoc.put("locLongitude", _locLong);
-//		jsonLoc.put("locLatitude", _locLat);
+		jsonLoc.put("locLongitude", _locLong);
+		jsonLoc.put("locLatitude", _locLat);
 
 		return jsonLoc;
 	}
-
 }

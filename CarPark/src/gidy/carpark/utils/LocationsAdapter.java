@@ -50,7 +50,14 @@ public class LocationsAdapter extends ArrayAdapter<ParkingLocation> {
 	}
 
 	private void setupItem(LocationHolder holder) {
-		holder.locationButton.setText(holder.parkingLocation.getLocationString());
+		
+		String locationStr = holder.parkingLocation.getLocationString();
+		
+		if (!holder.parkingLocation.hasLocation()){
+			locationStr += " (ללא נ.צ.)";
+		}
+		
+		holder.locationButton.setText(locationStr);
 	}
 
 	public static class LocationHolder {

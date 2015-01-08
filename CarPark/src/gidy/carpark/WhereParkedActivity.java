@@ -31,35 +31,34 @@ public class WhereParkedActivity extends Activity {
 			
 			parkedAtStr = "חנית ב" + LocationUtils.getCurrentLocation().getLocationString();
 
-//			if (curParkLoc.hasLocation() && _gpsTracker.canGetLocation()){
-//				float distance = getDistance(curParkLoc);
-//
-//				if (distance < 1000){
-//					 parkedAtStr += ", במרחק " + Math.round(distance) +  " מ" + "\'";
-//				}
-//				else{
-//					parkedAtStr += ", במרחק " + String.format("%.02f", (distance/1000)) + " ק" + "\"" + "מ";
-//				}
-//			}
+			if (curParkLoc.hasLocation() && _gpsTracker.canGetLocation()){
+				float distance = getDistance(curParkLoc);
+
+				if (distance < 1000){
+					 parkedAtStr += ", במרחק " + Math.round(distance) +  " מ" + "\'";
+				}
+				else{
+					parkedAtStr += ", במרחק " + String.format("%.02f", (distance/1000)) + " ק" + "\"" + "מ";
+				}
+			}
 		}
-		
 
 		tv.setText(parkedAtStr);
 	}
 
-//	private float getDistance(ParkingLocation curParkLoc) {
-//		double parkingLat = curParkLoc.getLat();
-//		double parkingLong = curParkLoc.getLong();
-//
-//		double curLong = _gpsTracker.getLongitude();
-//		double curLat = _gpsTracker.getLatitude();
-//
-//		float results[] = new float[1];
-//
-//		Location.distanceBetween(parkingLat, parkingLong, curLat, curLong, results);
-//
-//		return results[0];
-//	}
+	private float getDistance(ParkingLocation curParkLoc) {
+		double parkingLat = curParkLoc.getLat();
+		double parkingLong = curParkLoc.getLong();
+
+		double curLong = _gpsTracker.getLongitude();
+		double curLat = _gpsTracker.getLatitude();
+
+		float results[] = new float[1];
+
+		Location.distanceBetween(parkingLat, parkingLong, curLat, curLong, results);
+		
+		return results[0];
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -85,5 +84,4 @@ public class WhereParkedActivity extends Activity {
 		_gpsTracker.stopUsingGPS();
 		super.onStop();
 	}
-	
 }
