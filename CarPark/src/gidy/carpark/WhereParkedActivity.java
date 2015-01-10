@@ -33,7 +33,6 @@ public class WhereParkedActivity extends Activity implements SensorEventListener
 	private float _azimuth = 0f;
 	private float[] _gravityMatrix = new float[3]; 
 	private float[] _magneticsMatrix = new float[3]; 
-	//private float[] _orientation = new float[3]; 
 
 	private ImageView arrowImage;
 
@@ -243,6 +242,9 @@ public class WhereParkedActivity extends Activity implements SensorEventListener
 		_sensorManager.registerListener(this, 
 				_sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), 
 				SensorManager.SENSOR_DELAY_UI); 
+		_sensorManager.registerListener(this,
+				_sensorManager.getDefaultSensor(Sensor.TYPE_SIGNIFICANT_MOTION),
+				SensorManager.SENSOR_DELAY_GAME);
 		super.onResume();
 	}
 
