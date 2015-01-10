@@ -6,9 +6,8 @@ package gidy.carpark.utils;
 
 import gidy.carpark.ParkingLocation;
 import gidy.carpark.R;
-
 import java.util.List;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 
+@SuppressLint("ViewHolder")
 public class LocationsAdapter extends ArrayAdapter<ParkingLocation> {
 
 	private List<ParkingLocation> locations;
