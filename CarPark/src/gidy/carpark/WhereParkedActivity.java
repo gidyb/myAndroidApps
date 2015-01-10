@@ -1,19 +1,24 @@
 package gidy.carpark;
 
+import java.util.Locale;
+
 import gidy.carpark.utils.GPSTracker;
 import gidy.carpark.utils.LocationUtils;
 import android.app.Activity;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +26,7 @@ public class WhereParkedActivity extends Activity implements SensorEventListener
 
 	private boolean _isGeoRelevant = false;
 	private Location curParkingLocationLoc = new Location("");
+	private ParkingLocation _curParkingLoc;
 
 	// Used for getting GPS location
 	private GPSTracker _gpsTracker;
@@ -35,6 +41,7 @@ public class WhereParkedActivity extends Activity implements SensorEventListener
 	private float[] _magneticsMatrix = new float[3]; 
 
 	private ImageView arrowImage;
+	private Button showOnMapButton;
 
 
 	@Override
@@ -46,6 +53,7 @@ public class WhereParkedActivity extends Activity implements SensorEventListener
 		_gpsTracker = new GPSTracker(WhereParkedActivity.this);
 
 		arrowImage = (ImageView) findViewById(R.id.arrowImage);
+		showOnMapButton  = (Button) findViewById(R.id.ShowOnMapButton);
 
 		_sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
@@ -67,21 +75,22 @@ public class WhereParkedActivity extends Activity implements SensorEventListener
 
 		else{
 			arrowImage.setVisibility(View.GONE);
+			showOnMapButton.setVisibility(View.GONE);
 		}
 	}
 
 
 	private void initGeo(){
 
-		ParkingLocation curParkLoc = LocationUtils.getCurrentLocation();
+		_curParkingLoc = LocationUtils.getCurrentLocation();
 
-		if (curParkLoc != null){
+		if (_curParkingLoc != null){
 			
-			if (curParkLoc.hasLocation() && _gpsTracker.canGetLocation()){
+			if (_curParkingLoc.hasLocation() && _gpsTracker.canGetLocation()){
 				_isGeoRelevant = true;
 				
-				curParkingLocationLoc.setLatitude(curParkLoc.getLat());
-				curParkingLocationLoc.setLongitude(curParkLoc.getLong());
+				curParkingLocationLoc.setLatitude(_curParkingLoc.getLat());
+				curParkingLocationLoc.setLongitude(_curParkingLoc.getLong());
 			}
 		}
 	}
@@ -252,5 +261,16 @@ public class WhereParkedActivity extends Activity implements SensorEventListener
 	protected void onPause(){
 		_sensorManager.unregisterListener(this);
 		super.onPause();
+	}
+	
+	public void showOnMap(View view){
+		
+		String uri = String.format(Locale.ENGLISH, "http://maps.google.com/maps?daddr=%f,%f (%s)",
+				_curParkingLoc.getLat(),
+				_curParkingLoc.getLong(),
+				_curParkingLoc.getLocationString());
+		Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+		intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
+		startActivity(intent);
 	}
 }

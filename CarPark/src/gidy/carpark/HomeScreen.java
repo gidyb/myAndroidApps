@@ -4,6 +4,7 @@ import gidy.carpark.utils.CommonUtils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,9 +16,9 @@ public class HomeScreen extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		setContentView(R.layout.activity_home_screen);
-		
+
 		CommonUtils.initHebrewText(this,(Button)findViewById(R.id.JustParkedButton));
 		CommonUtils.initHebrewText(this,(Button)findViewById(R.id.WhereParkedButton));
 
@@ -41,19 +42,18 @@ public class HomeScreen extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+
 	public void justParked(View view){
 		Intent intent = new Intent(this, JustParkedActivity.class);
 		startActivity(intent);
 	}
-	
+
 	public void whereParked(View view){
 		Intent intent = new Intent(this, WhereParkedActivity.class);
 		startActivity(intent);
 	}
-	
+
 	public Context getAppContext(){
 		return this;
-		
 	}
 }
