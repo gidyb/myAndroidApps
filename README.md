@@ -11,8 +11,8 @@ Here is a list of the uploaded projects:
             experience of the user) can help users use the app more effectively and enjoy it more. I succeeded proving
             that personlized UIs are better than generic one.
             
-            I uploaded 3 versions of the APP - the generic version and the versions for not experienced women
-            (MedAppNEW) and not experienced men (MedAppNEM)
+            I uploaded 3 versions of the APP - the generic version (MedAppG) and the versions for not experienced
+            women (MedAppNEW) and not experienced men (MedAppNEM)
 *******************************************************************************************************            
             
 2) CarPark - An app that lets save geographic locations and navigate to them. 
