@@ -5,13 +5,17 @@ Here is a list of the uploaded projects:
             This is an app that lets you call an ambulance (methodically) and gives you medical information on how to
             help a person in need (including instruction videos). 
             
-            In my research project, I developed several UIs for this app and tested it in a series of tests (which                included human-but-not-really-hurt patients how the personalization of UI (by gender and the medical                  experience of the user) can help users use the app more effectively and enjoy it more. I succeeded proving             that personlized UIs are better than generic one.
+            In my research project, I developed several UIs for this app and tested it in a series of tests (which
+            included human-but-not-really-hurt patients how the personalization of UI (by gender and the medical
+            experience of the user) can help users use the app more effectively and enjoy it more. I succeeded proving
+            that personlized UIs are better than generic one.
             
             I uploaded 2 versions of the APP - the generic version and the version not experienced women (MedAppNEW)
 *******************************************************************************************************            
             
 2) CarPark - An app that lets save geographic locations and navigate to them. 
-             Originaly I thought of the need to save my parking place, but developed more features to play a bit with                 Android features.
+             Originaly I thought of the need to save my parking place, but developed more features to play a bit with
+             Android features.
              
              List of versions:
              
@@ -27,6 +31,7 @@ Here is a list of the uploaded projects:
                                                           
             ver2.1 - A Compass is added - shows the user in which direction the saved location is.
             
-            ver2.2 - A 'Show on Map' option is added - opens GoogleMaps app and shows the current and saved                                locations and the possible route between them
+            ver2.2 - A 'Show on Map' option is added - opens GoogleMaps app and shows the current and saved          
+                     locations and the possible route between them
             
                         
