@@ -148,7 +148,7 @@ public class JustParkedActivity extends Activity {
 	}
 
 	@Override
-	public void onStop(){
+	public void onPause(){
 		try{
 			LocationUtils.saveLocationsToDisk();	
 			_gpsTracker.stopUsingGPS();
@@ -156,7 +156,13 @@ public class JustParkedActivity extends Activity {
 			// TOO BAD :(
 		}
 
-		super.onStop();
+		super.onPause();
+	}
+	
+	@Override
+	public void onResume(){
+		_gpsTracker.getLocation();
+		super.onResume();
 	}
 
 	private void removeParkingLocation(int position){

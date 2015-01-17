@@ -254,12 +254,14 @@ public class WhereParkedActivity extends Activity implements SensorEventListener
 		_sensorManager.registerListener(this,
 				_sensorManager.getDefaultSensor(Sensor.TYPE_SIGNIFICANT_MOTION),
 				SensorManager.SENSOR_DELAY_GAME);
+		_gpsTracker.getLocation();
 		super.onResume();
 	}
 
 	@Override
 	protected void onPause(){
 		_sensorManager.unregisterListener(this);
+		_gpsTracker.stopUsingGPS();
 		super.onPause();
 	}
 	
