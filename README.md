@@ -34,6 +34,8 @@ Here is a list of the uploaded projects:
             ver2.1 - A Compass is added - shows the user in which direction the saved location is.
             
             ver2.2 - A 'Show on Map' option is added - opens GoogleMaps app and shows the current and saved          
-                     locations and the possible route between them
+                     locations and the possible route between them.
+                     
+            ver2.3 - Driving time to destination is added
             
                         
