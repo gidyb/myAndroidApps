@@ -6,11 +6,11 @@ This is an app that lets you call an ambulance (methodically) and gives you medi
 help a person in need (including instruction videos). 
             
 In my research project, I developed several UIs for this app and tested it in a series of tests (which
-included human-but-not-really-hurt patients how the personalization of UI (by gender and the medical 
+included human-but-not-really-hurt patients) to see how the personalization of UI (by gender and the medical 
 experience of the user) can help users use the app more effectively and enjoy it more. I succeeded proving
-that personlized UIs are better than generic one.
+that personlized UIs are better than a generic one.
             
-I uploaded 3 versions of the APP - the generic version (MedAppG) and the versions for not experienced
+I uploaded 3 versions of the APP to GitHub - the generic version (MedAppG) and the versions for not experienced
 women (MedAppNEW) and not experienced men (MedAppNEM)
 
 # CarPark
@@ -22,9 +22,9 @@ Android features.
              
 List of versions:
  
- ver1.0 - Lets the user save a location by name (String), and check later what you saved.
+ ver1.0 - Lets the user save a location by name (String), and check later what was saved.
         - The saved locations are shown in a list, and the user can pick a past location
-        - The location is stored on phone memory in JSON format
+        - The locations are stored on the phone memory in JSON format
         - Deleting from the location list is supported
             
 ver2.0 - In addition to String name, the geo cordinates are saved as well.
@@ -37,4 +37,4 @@ ver2.1 - A Compass is added - shows the user in which direction the saved locati
 ver2.2 - A 'Show on Map' option is added - opens GoogleMaps app and shows the current and saved          
          locations and the possible route between them.
                      
-ver2.3 - Driving time to destination is added
+ver2.3 - Driving time to destination (from GoogleMaps) is added
